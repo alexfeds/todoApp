@@ -1,0 +1,89 @@
+<div class="container h-100" style="    margin-top: 10%;">
+  <div class="row align-items-center h-100">
+    <div class="col-8 mx-auto">
+      <div class="jumbotron">
+        <div class="add-todo-form text-center">
+          <form class="form-horizontal" role="form" method="POST" action="/register">
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <h2>Login</h2>
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="text" name="email" class="form-control" id="emailRed" placeholder="you@example.com"
+                      required #emailRed="ngModel" [(ngModel)]="loginUserData.email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autofocus>
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+
+                    <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                        <i class="fa fa-close">
+                          <div class="md-errors-spacer" [hidden]="emailRed.valid || emailRed.untouched">
+                            <div *ngIf="emailRed.errors && emailRed.errors.required">
+                              Email is required
+                            </div>
+                            <div *ngIf="emailRed.errors && emailRed.errors.pattern">
+                              Email is invalid
+                            </div>
+                          </div>
+                        </i>
+                      </span>
+                    </div>
+
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group has-danger">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input [(ngModel)]="loginUserData.password" type="password" name="password" class="form-control" id="password"
+                      placeholder="Password" required>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                    <i class="fa fa-close"> Example Error Message</i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <button (click)="loginUser()" [disabled]="!loginUserData.email || !loginUserData.password || emailRed.errors"
+                  type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                  Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
