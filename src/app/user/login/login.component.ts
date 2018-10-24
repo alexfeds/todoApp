@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../shared/services/auth/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +21,11 @@ export class LoginComponent implements OnInit {
   loginUser() {
     console.log(this.loginUserData)
 
-    this.authService.registerUser(this.loginUserData).subscribe(
-      result => { console.log(result) }, (error: HttpErrorResponse) => {
-        console.log(error)
+    this.authService.registerUser(this.loginUserData).subscribe(res => {
+      console.log("loged in success", res)
+    },
+      err => {
+        console.log(err)
       }
 
 
