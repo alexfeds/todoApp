@@ -1,6 +1,7 @@
+import { User } from './../user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable, ReplaySubject, Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(user){
-    return this.http.post<any>('/api/register/', user);
+  registerUser(user): Observable<User>{
+    return this.http.post<User>('/api/register/', user);
   }
 
-  loginUser(user){
-    return this.http.post<any>('/api/login/', user);
+  loginUser(user): Observable<User>{
+    return this.http.post<User>('/api/login/', user);
   }
 }

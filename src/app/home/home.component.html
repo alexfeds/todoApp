@@ -24,16 +24,16 @@
                 <div class="col-md-1">
                   <input type="checkbox" [checked]="todo.isCompleted" (click)="updateStatus(todo)">
                 </div>
-                <div class="col-md-7 ui-pad-left">
-                  <span [style.visibility]="todo.isEditMode ? 'hidden' : 'visible'">{{todo.text}}</span>
-                  <input type="text" [style.visibility]="!todo.isEditMode ? 'hidden' : 'visible'" [value]="todo.text"
+                <div class="col-md-7">
+                  <span  class="ui-pad-left" [hidden]="todo.isEditMode">{{todo.text}}</span>
+                  <input type="text"  [hidden]="!todo.isEditMode" [value]="todo.text"
                     (keypress)="updateTodoText($event, todo)">
-                  <input type="button" [style.visibility]="!todo.isEditMode ? 'hidden' : 'visible'" value="Cancel"
+                  <input type="button"  [hidden]="!todo.isEditMode" value="Cancel"
                     (click)="setEditState(todo, false)" class="btn btn-warning">
                 </div>
                 <div class="col-md-4 btns">
-                  <input (click)="deleteTodo(todo)" type="button" class="btn btn-danger pull-right" value="Delete">
-                  <input [class.disabled]="todo.isCompleted" (click)="setEditState(todo, true)" type="button" class="btn btn-default pull-right"
+                  <input (click)="deleteTodo(todo)" type="button" style="margin-right: 5px;" class="btn mybtn btn-danger pull-right" value="Delete">
+                  <input [class.disabled]="todo.isCompleted" (click)="setEditState(todo, true)" type="button" class="btn mybtn btn-default pull-right"
                     value="Edit">
                 </div>
               </div>
